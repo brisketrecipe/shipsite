@@ -9,7 +9,9 @@ function App() {
     { name: 'Tue 3/19 Ship every day site - post daily updates', url: 'https://shipsite.vercel.app/' },
     { name: 'Wed 3/20 March Madness Bracket predictor', url: 'https://github.com/brisketrecipe/mm_predict' },
     { name: 'Thu 3/21 AI Agent for Basketball programs - published to GPT store', url: 'https://chat.openai.com/g/g-9iR4UIFYc-basketball-program-assistance' },
+    { name: 'Fri 3/22 Auto BTC trading based on MACD and RSI', url: ' https://github.com/brisketrecipe/BTCauto/tree/main' },
 
+   
 
     // Add more projects as needed
   ];
