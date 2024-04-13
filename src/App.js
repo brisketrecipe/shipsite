@@ -1,5 +1,8 @@
 import React from 'react';
 import btc from './btc.png';
+import Blog from './blog';
+import BlogPost1 from './BlogPost1';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -10,9 +13,7 @@ function App() {
     { name: 'Wed 3/20 March Madness Bracket predictor', url: 'https://github.com/brisketrecipe/mm_predict' },
     { name: 'Thu 3/21 AI Agent for Basketball programs - published to GPT store', url: 'https://chat.openai.com/g/g-9iR4UIFYc-basketball-program-assistance' },
     { name: 'Fri 3/22 Auto BTC trading based on MACD and RSI', url: ' https://github.com/brisketrecipe/BTCauto/tree/main' },
-
-   
-
+    { name: 'Saturday April 13 Blog', url: '/blog' },
     // Add more projects as needed
   ];
 
@@ -23,36 +24,55 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={btc} className="App-logo" alt="logo" />
-        <p>
-          What's up Fam this is where we will keep up with the ship 1 per day mindset
-        </p>
-        {/* Project Sections */}
-        <section>
-          <h2>Completed Projects</h2>
-          <ul>
-            {completedProjects.map((project, index) => (
-              <li key={index}>
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {project.name}
-                </a>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={btc} className="App-logo" alt="logo" />
+          <p>What's up Fam this is where we will keep up with the ship 1 per day mindset</p>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
               </li>
-            ))}
-          </ul>
-        </section>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <section>
-          <h2>Future Projects</h2>
-          <ul>
-            {futureProjects.map((project, index) => (
-              <li key={index}>{project}</li>
-            ))}
-          </ul>
-        </section>
-      </header>
-    </div>
+          {/* Project Sections */}
+          <Routes>
+            <Route path="/" element={
+              <>
+                <section>
+                  <h2>Completed Projects</h2>
+                  <ul>
+                    {completedProjects.map((project, index) => (
+                      <li key={index}>
+                        <a href={project.url} target="_blank" rel="noopener noreferrer">
+                          {project.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h2>Future Projects</h2>
+                  <ul>
+                    {futureProjects.map((project, index) => (
+                      <li key={index}>{project}</li>
+                    ))}
+                  </ul>
+                </section>
+              </>
+            } />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/post1" element={<BlogPost1 />} />
+            {/* Add more routes for additional blog posts */}
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
